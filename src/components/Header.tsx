@@ -2,7 +2,7 @@ export default function Header() {
     return (
         <div className='w-full font-["Pokemon_Solid"] bg-[#333536] flex flex-col'>
             <div className="flex justify-around">
-                <div className="bg-[#daa73b] sm:w-[20%]"></div>
+                <div className="bg-[#daa73b] w-[20%]"></div>
                 <div className="flex flex-col">
                     <div className='min-h-[25%] sm:min-h-[30%] bg-[#daa73b]'></div>
                     <div className="relative my-12">
@@ -10,7 +10,7 @@ export default function Header() {
                         <div className="text-yellow-400 absolute text-[46px] sm:text-[94px] left-1 -top-[12px] whitespace-nowrap">Poke-Guesser</div>
                     </div>
                 </div>
-                <div className="bg-[#daa73b] sm:w-[20%]"></div>
+                <div className="bg-[#daa73b] w-[20%]"></div>
             </div>
             <div className="w-full min-h-[4rem] bg-[#2a2c2b]">
                 <div className="flex justify-center relative">
