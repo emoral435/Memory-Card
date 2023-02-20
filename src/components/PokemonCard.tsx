@@ -9,6 +9,7 @@ export default function PokemonCard(props: {image: string, name: string, gameboa
         setTimeout(() => {
             props.gameboardCB(count)
             if (count >= 1) setCount(0)
+            props.gridCB()
         })
     } }>
         <div className="w-full h-full flex flex-col jusitfy-start items-center">
