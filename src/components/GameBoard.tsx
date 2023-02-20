@@ -1,5 +1,6 @@
 import ScoreBoard from "./ScoreBoard"
 import { useState, useEffect } from "react"
+import PokeGrid from "./PokeGrid"
 
 export default function GameBoard(props: any) {
     const [currScore, setCurrScore] = useState(0)
@@ -16,10 +17,18 @@ export default function GameBoard(props: any) {
         }
     }, [currScore, bestScore])
 
+    let updateScore = (score: number) => {
+        if (score < 1) {
+            setCurrScore(currScore + 1)
+        } else {
+            setCurrScore(0)
+        }
+    }
+
     return (
         <div className="h-full w-full" id="gameboard">
             <ScoreBoard currentScore={currScore} bestScore={bestScore}/>
-            {/* <PokeGrid /> */}
+            <PokeGrid updateScore={updateScore}/>
         </div>
     )
 }
