@@ -3,24 +3,36 @@ import { useState, useEffect } from "react"
 import PokemonCard from "./PokemonCard"
 import PokeDex from "../functions/returnPokeMonIndex"
 import shuffle  from "lodash.shuffle"
+import RestartButton from "./RestartButton"
 
-export default function GameBoard(props: any) {
+export default function GameBoard() {
     const [currScore, setCurrScore] = useState(0)
     const [bestScore, setBestScore] = useState(0) // NOTE DONT FORGET TO UPDATE THESE ACCORDING TO THE CLICKINGS
     const [clicked, setClicked] = useState(0)
-
+    
+    let restartScoring = () => {
+        for (let i = 0; i < PokeDex.length; i++) {
+            PokeDex[i].count = 0
+        }
+    }
     useEffect(() => {
         if (currScore > bestScore) {
             setBestScore(currScore)
         }
 
         if (bestScore == 12) {
-            let gameboard = document.getElementById('gameboard')!
-            gameboard.classList.add('hidden')
+            restartScoring()
+            let pokeGrid = document.getElementById('PokeGrid')!
+            pokeGrid.classList.add('hidden')
+            setCurrScore(0)
+            setBestScore(0)
+            let restart = document.getElementById('restart')!
+            restart.classList.remove('hidden')
         }
 
         
     }, [currScore, bestScore])
+
 
     let updateScore = (index: number) => {
         let currentScore = PokeDex[index].count
@@ -28,9 +40,7 @@ export default function GameBoard(props: any) {
             PokeDex[index].count += 1
             setCurrScore(currScore + 1)
         } else {
-            for (let i = 0; i < PokeDex.length; i++) {
-                PokeDex[i].count = 0
-            }
+            restartScoring()
             setCurrScore(0)
         }
     }
@@ -48,13 +58,14 @@ export default function GameBoard(props: any) {
     cards = shuffle(cards)
 
     return (
-        <div className="h-full w-full" id="gameboard">
+        <div className="h-full w-full">
             <ScoreBoard currentScore={currScore} bestScore={bestScore}/>
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center" id="PokeGrid">
                 <div className="grid gap-4 grid-cols-2 sm:grid-cols-4 md:grid-cols-6">
                     {cards}
                 </div>
             </div>
+            <RestartButton />
         </div>
     )
 }
