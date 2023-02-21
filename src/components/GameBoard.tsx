@@ -22,10 +22,15 @@ export default function GameBoard(props: any) {
         
     }, [currScore, bestScore])
 
-    let updateScore = (score: number) => {
-        if (score < 1) {
+    let updateScore = (index: number) => {
+        let currentScore = PokeDex[index].count
+        if (currentScore < 1) {
+            PokeDex[index].count += 1
             setCurrScore(currScore + 1)
         } else {
+            for (let i = 0; i < PokeDex.length; i++) {
+                PokeDex[i].count = 0
+            }
             setCurrScore(0)
         }
     }
