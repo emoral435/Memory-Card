@@ -59,4 +59,4 @@ npm run dev
 I've loved Pokémon ever since I was a kid, and building this game was a way to merge that passion with my interest in frontend development. It’s a quick game that sharpens your memory while giving you a nostalgic Pokémon twist!
 🌐 Live Demo
 
-Check it out here: [Live Site](https://emoral435.github.io/Memory-Card/)
+Check it out here: [Live Site](https://emoral435.github.io/MemoryMon/)
